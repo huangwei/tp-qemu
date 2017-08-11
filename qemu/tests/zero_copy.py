@@ -54,6 +54,7 @@ def run(test, params, env):
     error.context("Boot vm with 'vhost=on'", logging.info)
     params["vhost"] = "vhost=on"
     params["start_vm"] = 'yes'
+    params["nettype"] = params.get("vhost_net_type", "bridge")
     login_timeout = int(params.get("login_timeout", 360))
     env_process.preprocess_vm(test, params, env, params.get("main_vm"))
     vm = env.get_vm(params["main_vm"])
